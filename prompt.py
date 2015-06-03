@@ -6,7 +6,7 @@ def openurl(url):
     prompt("Press enter to open: '{}'...\n".format(url))
     webbrowser.open(url)
 
-def prompt(s):
+def prompt(s="Press any key to continue..."):
     try:
         return raw_input(s) # python 2
     except NameError:
