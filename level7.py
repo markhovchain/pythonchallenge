@@ -1,5 +1,11 @@
 __author__ = 'dracz'
 
+"""
+Note this uses the py png module:
+
+$ pip install pypng
+"""
+
 url7 = 'http://www.pythonchallenge.com/pc/def/oxygen.html'
 # title: "smarty"
 
