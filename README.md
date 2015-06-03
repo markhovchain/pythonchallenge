@@ -1,6 +1,13 @@
 # Python Challenge Solutions
 
-These are my solutions to the [Python Challenge](http://www.pythonchallenge.com)
+*SPOILER ALERT* These are my solutions to the [Python Challenge](http://www.pythonchallenge.com)
 
-Some of this relies on Python 3.
+## Dependencies
+
+Some solutions rely on Python 3. 
+
+Level 7 uses the pypng module:
+
+    $ pip install pypng
+    
 
