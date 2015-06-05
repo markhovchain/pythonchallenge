@@ -14,7 +14,8 @@ from lookandsay import lookandsay
 
 ans = len(lookandsay(31))
 
-print(ans) #5808
+print(ans)
+#5808
 
 import prompt
 

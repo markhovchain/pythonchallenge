@@ -18,9 +18,13 @@ for x in range(0, img.size[0], 2):
     for y in range(0, img.size[1], 2):
         even.putpixel((x-x//2, y-y//2), img.getpixel((x,y)))
 
+f = "./img/even.png"
+print("saving {}...".format(f))
+even.save(f)
+
 ImageShow.show(even)
 
-# if you look closely, you can see a word in the imeage: evil
+# if you look closely, you can see a word in the image: evil
 
 import prompt
 prompt.openurl("http://www.pythonchallenge.com/pc/return/evil.html")

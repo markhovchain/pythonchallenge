@@ -24,7 +24,8 @@ import imghdr
 for i in range(0,5):
     img = evil1[i::5]
     typ = imghdr.what("", h=img)  # determine the image type
-    with open("evil{}.{}".format(i+1, typ), "wb+") as f:
+
+    with open("./img/evil{}.{}".format(i+1, typ), "wb+") as f:
         print("writing {}...".format(f.name))
         f.write(img)
 

@@ -30,7 +30,7 @@ url14 = "http://www.pythonchallenge.com/pc/return/555-ITALY.html"
 # Not Found
 
 url14 = "http://www.pythonchallenge.com/pc/return/ITALY.html"
-# small letters
+# SMALL letters
 
 url14 = "http://www.pythonchallenge.com/pc/return/italy.html"
 
