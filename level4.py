@@ -3,6 +3,12 @@ __author__ = 'dracz'
 import urllib.request
 import re
 
+url4 = "http://www.pythonchallenge.com/pc/def/linkedlist.html"
+# page says: linkedlist.php
+
+url4 = "http://www.pythonchallenge.com/pc/def/linkedlist.php"
+#image link contains a url parameter: nothing=12345
+
 nothing = 12345
 
 # after awhile nothing = 16044, and the message says to divide by two

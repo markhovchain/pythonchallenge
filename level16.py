@@ -3,6 +3,8 @@ __author__ = 'dracz'
 url16 = "http://www.pythonchallenge.com/pc/return/mozart.html"
 
 # clue: let me get this straight
+# there are 4 pixel-wide horizontal bars on each image row
+# make an image twice as large and align the bars along the center
 
 from PIL import Image, ImageShow
 
@@ -38,3 +40,7 @@ f = 'img/romance.png'
 print("saving {}...".format(f))
 straight.save(f)
 ImageShow.show(straight)
+
+# says 'romance'
+import prompt
+prompt.openurl("http://www.pythonchallenge.com/pc/return/romance.html")

@@ -10,7 +10,7 @@ Which yields an xml error page containing: "XML error: Invalid document end at l
 So the php service is expecting an xml body. perhaps its an xmlrpc service?
 """
 
-from xmlrpc.client import ServerProxy, Error
+from xmlrpc.client import ServerProxy
 
 server = ServerProxy("http://www.pythonchallenge.com/pc/phonebook.php/")
 
