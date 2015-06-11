@@ -44,8 +44,6 @@ def draw(coords, color="black", speed=10):
 line1 = list(zip(first[0::2], first[1::2]))
 line2 = list(zip(second[0::2], second[1::2]))
 
-width, height = turtle.screensize()
-
 turtle.setworldcoordinates(max(first), max(first)+10, 0, 0)
 
 draw(line1, "brown")
@@ -54,7 +52,8 @@ draw(line2, "black")
 # it's a cow!
 url10 = 'http://www.pythonchallenge.com/pc/return/cow.html'
 
-# clue: hmm. it's a male.
+# clue: "hmm. it's a male."
+# oh, it's actually a bull
 url10 = 'http://www.pythonchallenge.com/pc/return/bull.html'
 
 import prompt

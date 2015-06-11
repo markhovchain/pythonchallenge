@@ -23,7 +23,7 @@ for x, y in [(x, y) for x in range(0, left.size[0]) for y in range(0, left.size[
     dp = (pl[0]-pr[0], pl[1]-pr[1], pl[2]-pr[2])
     diff.putpixel((x, y), dp)
 
-f = "img/baloons_diff.jpg"
+f = "img/balloons_diff.jpg"
 print("saving {}...".format(f))
 diff.save(f)
 

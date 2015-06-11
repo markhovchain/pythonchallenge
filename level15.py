@@ -10,10 +10,10 @@ Clue: "todo: buy flowers tomorrow"
 Title: "whom?"
 """
 
-# in what years 1**6 did January 1 fall on thursday?
+# in what years 1**6 did January 26 fall on Monday?
 from datetime import date
 
-
+print("Dates from years 1**6, where Jan 26 is a Monday:")
 for d in [d for d in [date(i, 1, 26) for i in range(1006, 1996, 10)] if d.weekday() == 0]:
     print(d)
 
