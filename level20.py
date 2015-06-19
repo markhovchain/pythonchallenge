@@ -80,19 +80,23 @@ print(r[:8])
 # first 3 bytes are gzip magic number
 
 
-import gzip
 
-with gzip.open(r, 'rb') as f:
-    print(f.read())
+# import gzip
 
-# FAIL: TypeError: embedded NUL character
+# with gzip.open(r, 'rb') as f:
+#    print(f.read())
+
+# above FAIL: TypeError: embedded NUL character
 # gzip module does not support pwd protection
+# instead, write it and use unix unzip
 
 with open("img/invader.zip", "wb") as f:
     print("writing {}...".format(f.name))
     f.write(r)
 
-"""
+print("""
+Now go unzip: img/invader.zip, and look at the readme:")
+
 $ cd img
 $ unzip invader.zip
 Archive:  invader.zip
@@ -109,6 +113,7 @@ Now for the level:
 
 * We used to play this game when we were kids
 * When I had no idea what to do, I looked backwards.
-"""
+""")
 
 # so level 21 is in contained in the package.pack
+

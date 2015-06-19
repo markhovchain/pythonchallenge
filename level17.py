@@ -108,8 +108,3 @@ print(f.read().decode())
 import prompt
 prompt.openurl("http://www.pythonchallenge.com/pc/return/balloons.html")
 
-
-
-
-
-

@@ -15,7 +15,8 @@ from xmlrpc.client import ServerProxy
 server = ServerProxy("http://www.pythonchallenge.com/pc/phonebook.php/")
 
 print(server.system.listMethods())
-# ['phone', 'system.listMethods', 'system.methodHelp', 'system.methodSignature', 'system.multicall', 'system.getCapabilities']
+# ['phone', 'system.listMethods', 'system.methodHelp', 'system.methodSignature',
+# 'system.multicall', 'system.getCapabilities']
 
 print(server.system.methodSignature('phone'))
 # [['string', 'string']] # takes a string parameter and returns a string

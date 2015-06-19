@@ -14,5 +14,6 @@ Level 11 and many others use the python imaging library (PIL) module: pillow:
 
     $ pip-3.4 install pillow
     
+Level 30 uses matplotlib to visualize the data
    
-   
+

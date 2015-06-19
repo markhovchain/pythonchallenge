@@ -24,7 +24,7 @@ from urlhelp import openurl
 # if it encodes an image then there should be 3 bytes per pixel for rgb
 # 10800/3 = 3600, maybe then each image file is a 60x60 pixel rgb image?
 
-from PIL import Image, ImageShow
+from PIL import Image
 img = Image.new("RGB", (300, 300))
 
 for i in range(0, 25):
@@ -33,7 +33,7 @@ for i in range(0, 25):
         piece = Image.frombytes("RGB", (60, 60), w.readframes(w.getnframes()))
         img.paste(piece, (60*(i % 5), 60*(i//5)))
 
-ImageShow.show(img)
+img.show()
 
 img.save("img/lake.png")
 
@@ -43,3 +43,4 @@ url26 = "http://www.pythonchallenge.com/pc/hex/decent.html"
 
 import prompt
 prompt.openurl(url26)
+

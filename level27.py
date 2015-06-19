@@ -10,7 +10,7 @@ url27 = "http://www.pythonchallenge.com/pc/hex/speedboat.html"
 # hint: did you say gif?
 # hint: oh, and this is not a repeat of 14
 
-from PIL import Image, ImageShow
+from PIL import Image
 from urlhelp import openurl
 
 # based on the 'did you say gif?' clue, try to open zigzag.gif
@@ -67,7 +67,7 @@ def img_to_rgb():
         for i in range(0, len(c), 3):
             r, g, b = c[i], c[i+1], c[i+2]
             nimg.putpixel((x, i//3), (r, g, b))
-    ImageShow.show(nimg)
+    nimg.show()
 
 
 def col_diffs(zigzag=True):
@@ -140,7 +140,7 @@ def between_tables():
 
     nimg = Image.frombytes("L", (w,h), bytes([0]+b1+[0]))
     nimg.save("img/zigzag_translated.gif")
-    ImageShow.show(nimg)
+    nimg.show()
 
     # now we can see it better:
     # "not", "word", "busy?"
@@ -173,8 +173,8 @@ def between_tables():
 
     url28 = "http://www.pythonchallenge.com/pc/ring/bell.html"
 
-    from urlhelp import openurl
-    openurl(url28, "repeat", "switch")
+    from prompt import openurl
+    openurl(url28)
 
 
 between_tables()

@@ -97,11 +97,13 @@ def pairs():
     greens = [g for r,g,b in bb]
     ps = [(greens[i], greens[i+1]) for i in range(0, len(greens), 2)]
     # look at the absolute value of the difference of these
+
     d = [abs(p[1] - p[0]) for p in ps]
     # lots of 42's # the meaning of life is ...
+
     print(bytes([n for n in d if n != 42]))
     # b'whodunnit().split()[0] ?'
-    # idk: nadav? guido?
+    # idk: the? butler? nadav? guido?
 
 pairs()
 

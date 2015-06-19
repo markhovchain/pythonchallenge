@@ -34,3 +34,4 @@ for d in [d for d in [date(i, 1, 26) for i in range(1006, 1996, 10)] if d.weekda
 
 import prompt
 prompt.openurl("http://www.pythonchallenge.com/pc/return/mozart.html")
+

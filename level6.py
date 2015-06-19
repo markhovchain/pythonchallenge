@@ -62,4 +62,6 @@ import prompt
 prompt.openurl('http://www.pythonchallenge.com/pc/def/hockey.html')
 
 # Clue: "it's in the air. look at the letters."
+# the letters are written other letters: H->O, O->X, C->Y, K->G, E->E, Y->N
+
 prompt.openurl('http://www.pythonchallenge.com/pc/def/oxygen.html')

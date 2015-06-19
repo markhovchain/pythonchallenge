@@ -75,3 +75,4 @@ url27 = "http://www.pythonchallenge.com/pc/hex/speedboat.html"
 
 import prompt
 prompt.openurl(url27)
+

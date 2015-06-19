@@ -10,7 +10,7 @@ __author__ = 'dracz'
 # ... + (98+97+97+96) + (96+95+95+94) + ...
 
 from urlhelp import openurl
-from PIL import Image, ImageShow
+from PIL import Image
 
 
 wire = Image.open(openurl("http://www.pythonchallenge.com/pc/return/wire.png", "huge", "file"))
@@ -52,11 +52,10 @@ for i, (t, r, b, l) in enumerate([(i, i-1, i-1, i-2) for i in range(edge, 1, -2)
 f = "./img/uzi.png"
 print("writing {}...".format(f))
 img.save(f)
-
-ImageShow.show(img)
+img.show()
 
 import prompt
 prompt.openurl("http://www.pythonchallenge.com/pc/return/cat.html")
 
 # his name is uzi
-# next: "http://www.pythonchallenge.com/pc/return/uzi.html"
+prompt.openurl("http://www.pythonchallenge.com/pc/return/uzi.html")

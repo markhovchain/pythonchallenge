@@ -1,21 +1,11 @@
 __author__ = 'dracz'
 
-import urllib.error
-import urllib.request
+import urlhelp
 import re
 
 url9 = 'http://www.pythonchallenge.com/pc/return/good.html'
 
-username = 'huge'
-password = 'file'
-
-password_mgr = urllib.request.HTTPPasswordMgrWithDefaultRealm()
-password_mgr.add_password(None, url9, username, password)
-
-handler = urllib.request.HTTPBasicAuthHandler(password_mgr)
-opener = urllib.request.build_opener(handler)
-
-page = opener.open(url9).read().decode()
+page = urlhelp.openurl(url9, 'huge', 'file').read().decode()
 
 match = re.search(r'first:\n(.*)\n\nsecond:\n(.*)\n\n-->', page, re.S)
 
@@ -27,6 +17,7 @@ second = [int(n) for n in match.group(2).replace('\n', '').split(',')]
 # second has 112 numbers in the range 77-220
 
 # clue is connect the dots, so assume these are lists of line coordinates
+# and draw them
 
 import turtle
 

@@ -3,10 +3,11 @@ __author__ = 'dracz'
 url11 = "http://www.pythonchallenge.com/pc/return/5808.html"
 
 # clue is: odd even
+# image of people with lots of fuzzy bits
 # maybe there are messages encoded in the odd and/or even pixels of the image?
 
 from urlhelp import openurl
-from PIL import Image, ImageShow
+from PIL import Image
 
 img = Image.open(openurl("http://www.pythonchallenge.com/pc/return/cave.jpg", "huge", "file"))
 
@@ -22,8 +23,7 @@ f = "./img/even.png"
 print("saving {}...".format(f))
 even.save(f)
 
-ImageShow.show(even)
-
+even.show()
 # if you look closely, you can see a word in the image: evil
 
 import prompt

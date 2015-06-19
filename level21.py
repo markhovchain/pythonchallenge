@@ -71,4 +71,3 @@ import prompt
 prompt.openurl('http://www.pythonchallenge.com/pc/hex/copper.html')
 
 
-

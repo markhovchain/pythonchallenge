@@ -12,7 +12,6 @@ There are openings at top-right and bottom-left.
 So we need to solve the maze?
 """
 
-
 maze = Image.open(openurl('http://www.pythonchallenge.com/pc/hex/maze.png', 'butter', 'fly'))
 w, h = maze.size
 start = (w-2, 0)

@@ -5,6 +5,12 @@ import pickle
 
 url5 = 'http://www.pythonchallenge.com/pc/def/peak.html'
 
+# title: peak hell
+# hint: pronounce it
+# hint: peak hell sounds familiar ?
+
+# sounds like pickle
+
 # banner on the page refers to: banner.p
 
 p = pickle.load(urllib.request.urlopen("http://www.pythonchallenge.com/pc/def/banner.p"))

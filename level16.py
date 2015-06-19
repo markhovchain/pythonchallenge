@@ -6,7 +6,7 @@ url16 = "http://www.pythonchallenge.com/pc/return/mozart.html"
 # there are 4 pixel-wide horizontal bars on each image row
 # make an image twice as large and align the bars along the center
 
-from PIL import Image, ImageShow
+from PIL import Image
 
 import urlhelp
 
@@ -39,7 +39,7 @@ for y, c in centers.items():
 f = 'img/romance.png'
 print("saving {}...".format(f))
 straight.save(f)
-ImageShow.show(straight)
+straight.show()
 
 # says 'romance'
 import prompt

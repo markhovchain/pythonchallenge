@@ -8,6 +8,7 @@ $ pip install pypng
 
 url7 = 'http://www.pythonchallenge.com/pc/def/oxygen.html'
 # title: "smarty"
+# image is a landscape with a thin strip of greycale across it
 
 hurl = 'http://www.pythonchallenge.com/pc/def/pants.html'
 
@@ -15,6 +16,9 @@ import urllib.request
 hint = urllib.request.urlopen(hurl).read().decode()
 
 print('\n{0} says: {1}'.format(hurl, hint))
+# says: amazing. zoom in
+# that's no help
+# look at the image
 
 f = urllib.request.urlopen('http://www.pythonchallenge.com/pc/def/oxygen.png')
 

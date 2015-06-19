@@ -81,4 +81,3 @@ Namespaces are one honking great idea -- let's do more of those!
 import prompt
 prompt.openurl("http://www.pythonchallenge.com/pc/hex/ambiguity.html")
 
-

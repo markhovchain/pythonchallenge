@@ -6,7 +6,7 @@ url18 = "http://www.pythonchallenge.com/pc/return/balloons.html"
 # hint:  "it is more obvious that what you might think"
 
 from urlhelp import openurl
-from PIL import Image, ImageShow
+from PIL import Image
 
 img = Image.open(openurl("http://www.pythonchallenge.com/pc/return/balloons.jpg", "huge", "file"))
 
@@ -102,9 +102,9 @@ for i, c in [(1, '+'), (2, '-'), (3, ' ')]:
 
 # the files say: butter - fly - ../hex/bin.html
 
-# http://www.pythonchallenge.com/pc/hex/bin.html
-# username: butter
-# password: fly
+import prompt
+prompt.openurl("http://www.pythonchallenge.com/pc/hex/bin.html", "butter", "fly")
+
 
 
 

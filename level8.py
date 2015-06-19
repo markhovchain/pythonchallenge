@@ -2,6 +2,15 @@ __author__ = 'dracz'
 
 url8 = 'http://www.pythonchallenge.com/pc/def/integrity.html'
 
+# title: working hard?
+# hint: can you find the missing link?
+# image of a bee on flower
+
+# the bee has a link that leads to pw protected page:
+# page contains comment:
+# un: 'BZh91AY&SYA\xaf\x82\r\x00\x00\x01\x01\x80\x02\xc0\x02\x00 \x00!\x9ah3M\x07<]\xc9\x14\xe1BA\x06\xbe\x084'
+# pw: 'BZh91AY&SY\x94$|\x0e\x00\x00\x00\x81\x00\x03$ \x00!\x9ah3M\x13<]\xc9\x14\xe1BBP\x91\xf08'
+
 import urllib.request
 import re
 
@@ -10,7 +19,7 @@ page = urllib.request.urlopen(url8).read().decode()
 un = re.search(r"un: '(.*)'", page).group(1)
 pw = re.search(r"pw: '(.*)'", page).group(1)
 
-# used unix 'file' command to determine that the un and pw fields are bzip2 encoded
+# unix 'file' command reveals that the un and pw fields are bz2 encoded
 
 import bz2
 
