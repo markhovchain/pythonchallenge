@@ -69,7 +69,8 @@ diffs = [d1 - d2 - 13 for d1, d2 in zip(mb1.getdata(), mb2.getdata())]
 nz_diffs = [d for d in diffs if d != 0]
 print(len(nz_diffs))
 # 1679
-# can we interpret these as an image?
+
+# can we interpret the nonzero diffs as an image?
 # what shapes will work?
 
 def factors(n):
