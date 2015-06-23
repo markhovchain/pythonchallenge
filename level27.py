@@ -80,7 +80,6 @@ def col_diffs(zigzag=True):
         diff = [e - o for e in even[i] for o in odd[i]]
         diffs.append(diff)
 
-import binascii
 
 def convert_color():
     mode, ba = img.palette.getdata()

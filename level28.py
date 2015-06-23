@@ -20,7 +20,6 @@ w, h = img.size
 bb = img.getdata()
 
 from collections import defaultdict
-from operator import itemgetter
 
 
 def get_pairs():

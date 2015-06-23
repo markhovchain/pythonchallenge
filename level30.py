@@ -64,7 +64,7 @@ def get_dims(length=7367):
     return [(w, h) for w in range(32, 320) for h in range(32, 320) if w*h == length]
 
 # the only dimensions that work for length=7367 are (53, 139) and (139, 53)
-# the first one actully shows something
+# the first one (53, 139) reveals some text that flipped and rotated
 
 def show_image(dims=(53, 139)):
     w, h = dims
@@ -73,3 +73,30 @@ def show_image(dims=(53, 139)):
     img = img.transpose(Image.ROTATE_270)
     img = img.transpose(Image.FLIP_LEFT_RIGHT)
     img.show()
+    img.save("img/yankeedoodle.png")
+
+# shows: n=str(x[i])[5] + str(x[i+1])[5] + str(x[i+2])[6]
+
+def compute_n():
+    # convert each number to string and format so that it's wide enough
+    # apply the formula from the image on consecutive triple without overlap
+    s = ["{:.5f}".format(n) for n in get_data(asints=False)]
+    n = [s[i][5] + s[i+1][5] + s[i+2][6] for i in range(0, len(s)-2, 3)]
+    b = bytes([int(x) for x in n])
+    print(b)
+
+"""
+So, you found the hidden message. There is lots of room here for a long message,
+but we only need very little space to say "look at grandpa", so the rest is just garbage.
+"""
+
+url31 = "http://www.pythonchallenge.com/pc/ring/grandpa.html"
+import prompt
+
+def solve():
+    show_image()
+    compute_n()
+    prompt.openurl(url31)
+
+solve()
+
