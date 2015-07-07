@@ -56,7 +56,6 @@ kurtosis:  -0.19682819894251757
 # does "look at the csv file" mean visualize as plot of image?
 
 from PIL import Image, ImageShow
-import prompt
 
 
 def get_dims(length=7367):

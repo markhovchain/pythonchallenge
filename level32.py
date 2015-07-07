@@ -3,226 +3,130 @@ __author__ = 'dracz'
 url32 = "http://www.pythonchallenge.com/pc/rock/arecibo.html"
 
 # title: etch-a-scetch
-# text:  Fill in the blanks <!-- for warmup.txt -->
 
-# it shows a Nonogram puzzle
+# it shows a Nonogram puzzle: https://en.wikipedia.org/wiki/Nonogram
 # the numbers in the margin show the length of contiguous blocks in the rows/columns
+
+# in the page source:  Fill in the blanks <!-- for warmup.txt -->
+# try warmup.txt
 
 warmup = "http://www.pythonchallenge.com/pc/rock/warmup.txt"
 
-# strategy: for each row, generate all possible configurations of boxes
-# then check the permutations until the column constraints are met
+# this file contains lines with the dimensions and horizontal/vertical clues for a nonogram
+# looks like we need to solve the puzzle
 
 
-def lpos(l, start, w):
-    """ generate list of possible positions for the run length in l[0]
-    in a puzzle of width w, starting from start pos
-    >>> lpos([2,1], 0, 5)
-    [[0, 1], [1, 2]]
-    >>> lpos([2,1], 1, 5)
-    [[1, 2]]
-    >>> lpos([2,2], 0, 5)
-    [[0, 1]]
-    >>> lpos([1,1], 0, 5)
-    [[0], [1], [2]]
+# characters to use for marking and visualizing puzzle/solution
+SPACE = " "
+MARK = "X"
+UNKNOWN = "?"
+
+
+def runs(l, w, space=SPACE, mark=MARK):
     """
-    end = w - sum(l) - len(l) + 2
-    return [list(range(p, p+l[0])) for p in range(start, end)]
+    Generate list of possible runs
+    :param l: list of ints specifying run lengths
+    :param w: the width of the puzzle
+    :param space: character to use for spaces
+    :param mark: character to use for marks
+    :return: list of list of bool specified whether box is marked
 
-
-def pos(l, w):
-    """ generate list of possible positions for list of run lengths
-    in puzzle of width w
-    >>> pos([2,1], 5)
-    [[0, 1, 3], [0, 1, 4], [1, 2, 4]]
-    >>> pos([1,1,1], 5)
-    [[0, 2, 4]]
+    >>> runs([2,1], 5, space="O", mark="X") == ['XXOXO', 'XXOOX', 'OXXOX']
+    True
+    >>> runs([1,1,1], 5, space=[False,], mark=[True,])
+    [[True, False, True, False, True]]
     """
-    res = lpos(l, 0, w)
-    while len(l[1:]) > 0:
-        l = l[1:]
-        new_res = []
-        for r in res:
-            for t in lpos(l, r[-1] + 2, w):
-                new_res.append(r+t)
-        res = new_res
+    res = []
+    for i in range(w - sum(l) - len(l) + 2):
+        head = space*i + mark*l[0]
+        if len(l) == 1:
+            res.append(head + space*(w-len(head)))
+        else:
+            tails = [space + tail for tail in runs(l[1:], w - len(head) - 1, space, mark)]
+            res.extend([head + tail for tail in tails])
     return res
 
 
-def pprint_runs(boxes, w):
-    """ visualize the run length boxes in puzzle of width w """
-    s = ""
-    for row in boxes:
-        print(row)
-        s += "\n"
-        for i in range(w):
-            if i in row:
-                s += "X"
-            else:
-                s += " "
-    print(s)
-
-
-def calc(rows, w):
-    """ calculate run length col value for each sequence of row click positions
-    >>> calc([[0,1,3], [0,2,3,4], [1,3,4]], 5)
-    [[2], [1, 1], [1], [3], [2]]
+def solve(hor, ver, max_iters=1000):
+    """ solve a puzzle specified by the horizontal and vertical clues
+    :param hor: list of list of integer clues for each row of the puzzle
+    :param ver: list of list of integer clues for each column of the puzzle
+    :return: a list of the rows of the puzzle solution as characters
     """
-    m = []
-    for row in rows:
-        b = [i in row for i in range(w)]
-        m.append(b)
-    r = []
-    for j in range(w):
-        c = []
-        n = 0
-        for i in range(len(m)):
-            if m[i][j]:
-                n += 1
-            elif n > 0:
-                c.append(n)
-                n = 0
-        if n > 0:
-            c.append(n)
-        r.append(c)
-    return r
+    w, h = len(ver), len(hor)
+    total = w*h
+
+    # generate all possible runs for row and column clues
+    hc = [runs(r, w) for r in hor]
+    vc = [runs(r, h) for r in ver]
+
+    res = [[UNKNOWN for i in range(w)] for j in range(h)]
+    iters, filled = 0, 0
+
+    # iterate until all boxes are filled in or we reach max number of iterations
+    print("\nsolving...\n")
+    while total - filled > 0:
+        iters += 1
+        iterate(hc, vc, res, col=False)
+        iterate(vc, hc, res, col=True)
+        filled = len([x for row in res for x in row if x != UNKNOWN])
+        print("filled", filled, "after", iters, "iterations")
+
+    print("\nsolved:\n")
+    print_solution(res)
+    return res
 
 
-import itertools
 
-def solve(rows, cols, brute_force=False):
-    """ solve the puzzle
-    for each row, generate possible solutions
-    then check permutations of solutions until match found in the columns
+def iterate(hc, vc, res, col=False):
+    """ iterate through one pass of the puzzles rows and columns
+    :param hc: list of current possible solutions for first dimension
+    :param vc: list of current possible solutions for second dimension
+    :param res: the list of rows of the current solution
+    :param col: whether iterating over columns or rows
     """
-    w = len(cols)
-    h = len(rows)
+    for i in range(len(hc)):
+        cs = hc[i]  # candidates for this row/col
+        for j in [j for j in range(len(vc))]:
+            r = res[i][j] if not col else res[j][i]
+            if not r == UNKNOWN:
+                continue
+            if [c[j] for c in cs].count(cs[0][j]) == len(cs):
+                if not col:
+                    res[i][j] = cs[0][j]  # fill in the row
+                else:
+                    res[j][i] = cs[0][j]  # fill in the col
+                vc[j] = prune(vc[j], i, cs[0][j])  # prune cols/rows
 
-    # list of list of possible solutions for each row, col
-    row_sols = [pos(row, w) for row in rows]
-    col_sols = [pos(col, h) for col in cols]
-
-    if not brute_force:
-        print("pruning...")
-        row_sols, col_sols = prune(row_sols, col_sols)
-
-    perms = itertools.product(*row_sols)  # all permutations of row solutions
-
-    n = 0
-    for perm in perms:
-        if n % 10000 == 0:
-            print("checking {}...".format(n))
-        n += 1
-        sol = calc(perm, w)
-        if check(sol, cols):
-            print("Found solution:", perm)
-            pprint_runs(perm, w)
-            print("After", n, "permutations")
-            return
-    print("No solution found after", n, "permutations")
+def prune(cs, i, val):
+    """ prune the list of list in cs to contain only those that have the specified val at index i """
+    return [c for c in cs if c[i] == val]
 
 
-DEBUG = True
-
-def prune(row_sols, col_sols):
-    w = len(col_sols)
-    h = len(row_sols)
-
-    marked_rows = mark_boxes(row_sols, w)
-
-    marked_cols = mark_boxes(col_sols, h)
-
-    rows_as_cols = transpose(marked_rows, w)
-    cols_as_rows = transpose(marked_cols, h)
-
-    pruned_rows = prune_sol(row_sols, cols_as_rows)
-    pruned_cols = prune_sol(col_sols, rows_as_cols)
-
-    return pruned_rows, pruned_cols
+def print_solution(res):
+    """ print the solution to console """
+    print("\n".join(["".join(r) for r in res]))
 
 
-def prune_sol(sol_set, constraints):
-    filtered = []
-    for c, sols in enumerate(sol_set):
-        filtered.append([sol for sol in sols if not reject(sol, constraints[c])])
-        if DEBUG:
-            print("pruning ", c, "...")
-            print("filtered {}/{}".format(len(sols) - len(filtered[c]), len(sols)))
-            print(sols)
-            print(filtered[c])
-    len_before = sum([len(l) for l in sol_set])
-    len_after = sum([len(l) for l in filtered])
-    print("before:", len_before)
-    print("after:", len_after)
-    return filtered
+import re
+
+def solve_puzzle(f):
+    """ Solve the puzzle specified in the file-like obj f """
+
+    def parse(s):
+        """parse lines of run length clues into list of list of int"""
+        return [[int(i) for i in l.split()] for l in s.split("\n") if l]
+
+    lines = f.read().decode()
+    hor = parse(re.search(r'# Horizontal(?: lines)?(.*)#', lines, re.S).group(1))
+    ver = parse(re.search(r'# Vertical(?: lines)?(.*)', lines, re.S).group(1))
+    return solve(hor, ver)
 
 
-def reject(sol, constraint):
-    for r in constraint:
-        if r not in sol:
-            if DEBUG:
-                ("rejecting", sol, "is missing", r)
-            return True
-    return False
-
-
-def print_rows(rows):
-    for i, row in enumerate(rows):
-        print(i, ":", row)
-
-
-def transpose(rows, w):
-    cols = [[] for i in range(w)]
-    for i, l in enumerate(rows):
-        for j in l:
-            cols[j].append(i)
-    return cols
-
-
-def mark_boxes(rows, w):
-    marked = []
-    for r, sols in enumerate(rows):
-        m = [True,]*w
-        for sol in sols:
-            for i in range(w):
-                if i not in sol:
-                    m[i] = False
-        marked.append([c for c, v in enumerate(m) if v])
-    return marked
-
-
-def print_marked(rows, w):
-    print(" " + "-"*w + " ")
-    for row in rows:
-        print("|" + "".join(["X" if i in row else " " for i in range(w)]) + "|")
-    print(" " + "-"*w + " ")
-
-
-def check(sol, cols):
-    """ check if the solution is contained in the cols """
-    for i in range(len(cols)):
-        if sol[i] != cols[i]:
-            return False
-    return True
-
-
-def solve1():
-    """ solve the warmup """
-    rows = [[2,1,2], [1,3,1], [5], [7], [9], [3], [2,3,2], [2,3,2], [2,3,2]]
-    cols = [[2,1,3], [1,2,3], [3], [8], [9], [8], [3], [1,2,3], [2,1,3]]
-    solve(rows, cols)
-
+solve_puzzle(open("img/warmup.txt", "rb"))
 
 """
-[0, 1, 4, 7, 8]
-[0, 3, 4, 5, 8]
-[2, 3, 4, 5, 6]
-[1, 2, 3, 4, 5, 6, 7]
-[0, 1, 2, 3, 4, 5, 6, 7, 8]
-[3, 4, 5]
-[0, 1, 3, 4, 5, 7, 8]
-[0, 1, 3, 4, 5, 7, 8]
-[0, 1, 3, 4, 5, 7, 8]
+filled 81 after 2 iterations:
 
 XX  X  XX
 X  XXX  X
@@ -235,106 +139,63 @@ XX XXX XX
 XX XXX XX
 """
 
-urlnext = "http://www.pythonchallenge.com/pc/rock/up.txt"
+up = "http://www.pythonchallenge.com/pc/rock/up.txt"
+up_sol = solve_puzzle(open("img/up.txt", "rb"))
 
-# Horizontal lines
-hl = """
-3 2
-8
-10
-3 1 1
+"""
+filled 1024 after 13 iterations:
 
-5 2 1
-5 2 1
-4 1 1
-15
-
-19
-6 14
-6 1 12
-6 1 10
-
-7 2 1 8
-6 1 1 2 1 1 1 1
-5 1 4 1
-5 4 1 4 1 1 1
-
-5 1 1 8
-5 2 1 8
-6 1 2 1 3
-6 3 2 1
-
-6 1 5
-1 6 3
-2 7 2
-3 3 10 4
-
-9 12 1
-22 1
-21 4
-1 17 1
-
-2 8 5 1
-2 2 4
-5 2 1 1
-5
+                   XXX XX
+                  XXXXXXXX
+                 XXXXXXXXXX
+                 XXX   X  X
+                 XXXXX XX X
+                 XXXXX XX X
+                XXXX   X  X
+             XXXXXXXXXXXXXXX
+           XXXXXXXXXXXXXXXXXXX
+          XXXXXX XXXXXXXXXXXXXX
+         XXXXXX   X XXXXXXXXXXXX
+         XXXXXX     X XXXXXXXXXX
+        XXXXXXX   XX  X XXXXXXXX
+        XXXXXX X X XX   X X X  X
+        XXXXX   X  XXXX        X
+        XXXXX XXXX X XXXX X X X
+        XXXXX   X X   XXXXXXXX
+         XXXXX XX  X   XXXXXXXX
+         XXXXXX  X  XX   X XXX
+          XXXXXX XXX  XX     X
+           XXXXXX   X   XXXXX
+X           XXXXXX  XXX
+XX           XXXXXXX   XX
+XXX  XXX   XXXXXXXXXX XXXX
+XXXXXXXXX XXXXXXXXXXXX    X
+XXXXXXXXXXXXXXXXXXXXXX    X
+ XXXXXXXXXXXXXXXXXXXXX XXXX
+  X  XXXXXXXXXXXXXXXXX    X
+   XX  XXXXXXXX XXXXX     X
+        XX     XX     XXXX
+          XXXXX  XX X   X
+                   XXXXX
 """
 
-# Vertical lines
-vl = """
-5
-5
-5
-3 1
+from PIL import Image
 
-3 1
-5
-5
-6
+bs = bytes([0 if x == MARK else 255 for row in up_sol for x in row])
 
-5 6
-9 5
-11 5 1
-13 6 1
+img = Image.frombytes("P", (len(up_sol[0]), len(up_sol)), bs)
+img.save("img/up.png")
 
-14 6 1
-7 12 1
-6 1 11 1
-3 1 1 1 9 1
+# from the image we can see it's the python mascot
+"http://www.pythonchallenge.com/pc/rock/python.html"
 
-3 4 10
-8 1 1 2 8 1
-10 1 1 1 7 1
-10 4 1 1 7 1
+# the page shows the solution of the up.txt nonogram and contains:
+# Congrats! You made it through to the smiling python.
+# title: here we go
+# Congrats! You made it through to the smiling python.
+# hint:	"Free" as in "Free speech", not as in "free...
 
-3 2 5 2 1 2 6 2
-3 2 4 2 1 1 4 1
-2 6 3 1 1 1 1 1
-12 3 1 2 1 1 1
-
-3 2 7 3 1 2 1 2
-2 6 3 1 1 1 1
-12 3 1 5
-6 3 1
-
-6 4 1
-5 4
-4 1 1
-5
-"""
-
-def parse_lines(s):
-    return [[int(i) for i in l.split()] for l in s.split("\n") if l]
-
-def solve2():
-    """ solve the second puzzle """
-    rows = parse_lines(hl)
-    cols = parse_lines(vl)
-    solve(rows, cols)
-
-solve1()
-
-
+url33 = "http://www.pythonchallenge.com/pc/rock/beer.html"
 
 
 
