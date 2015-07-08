@@ -38,3 +38,4 @@ def lookandsay(k):
         s = t + str(count) + c
         n += 1
     return s
+

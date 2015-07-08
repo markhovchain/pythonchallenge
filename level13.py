@@ -36,4 +36,4 @@ url14 = "http://www.pythonchallenge.com/pc/return/ITALY.html"
 url14 = "http://www.pythonchallenge.com/pc/return/italy.html"
 
 import prompt
-prompt.openurl(url14)
+prompt.openurl(url14, 14)

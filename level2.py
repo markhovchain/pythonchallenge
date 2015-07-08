@@ -35,6 +35,6 @@ URL 3: {2}
 """.format(word, url2, url3))
 
 import prompt
-prompt.openurl(url3)
+prompt.openurl(url3, 3)
 
 

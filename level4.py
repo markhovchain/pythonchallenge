@@ -34,5 +34,5 @@ while True:
 # peak.html
 
 import prompt
-prompt.openurl('http://www.pythonchallenge.com/pc/def/peak.html')
+prompt.openurl('http://www.pythonchallenge.com/pc/def/peak.html', 5)
 

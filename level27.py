@@ -168,12 +168,15 @@ def between_tables():
     b'repeat'
     """
 
-    # print and exec were removed in python 3. so the python2.7 list just includes switch and repeat
+    # print and exec were removed in python 3. so the python2.7 list just includes: switch and repeat
 
     url28 = "http://www.pythonchallenge.com/pc/ring/bell.html"
 
+    print("\nusername: switch")
+    print("password: repeat\n")
+
     from prompt import openurl
-    openurl(url28)
+    openurl(url28, 28)
 
 
 between_tables()

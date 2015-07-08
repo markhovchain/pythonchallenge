@@ -42,5 +42,5 @@ img.save("img/lake.png")
 url26 = "http://www.pythonchallenge.com/pc/hex/decent.html"
 
 import prompt
-prompt.openurl(url26)
+prompt.openurl(url26, 26)
 

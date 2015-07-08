@@ -21,7 +21,6 @@ bb = img.getdata()
 
 from collections import defaultdict
 
-
 def get_pairs():
     # look into the colors
     # return a dict where keys are counts, and val is a pair of green channel colors with that count
@@ -107,7 +106,7 @@ def pairs():
 pairs()
 
 from prompt import openurl
-openurl("http://www.pythonchallenge.com/pc/ring/guido.html")
+openurl("http://www.pythonchallenge.com/pc/ring/guido.html", 29)
 
 
 

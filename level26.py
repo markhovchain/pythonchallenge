@@ -68,11 +68,13 @@ new name: myfixed.gif
 # it says "speed"
 
 url27 = "http://www.pythonchallenge.com/pc/hex/speed.html"
+import prompt
+prompt.openurl(url27, 27)
 
 # nope. clue said: "I am missing the *boat*"
 
 url27 = "http://www.pythonchallenge.com/pc/hex/speedboat.html"
+prompt.openurl(url27, 27)
 
-import prompt
-prompt.openurl(url27)
+
 

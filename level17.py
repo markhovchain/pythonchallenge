@@ -100,11 +100,11 @@ print("="*80)
 import urllib
 opener = urllib.request.build_opener()
 opener.addheaders.append(('Cookie', 'info=the+flowers+are+on+their+way'))
-f = opener.open("http://www.pythonchallenge.com/pc/stuff/violin.php")
+f = opener.open("http://www.pythonchallenge.com/pc/stuff/violin.php", 18)
 print(f.read().decode())
 
 
 # contains the message: "oh well, don't you dare to forget the balloons"
 import prompt
-prompt.openurl("http://www.pythonchallenge.com/pc/return/balloons.html")
+prompt.openurl("http://www.pythonchallenge.com/pc/return/balloons.html", 18)
 

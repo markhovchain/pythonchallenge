@@ -55,7 +55,7 @@ img.save(f)
 img.show()
 
 import prompt
-prompt.openurl("http://www.pythonchallenge.com/pc/return/cat.html")
+prompt.openurl("http://www.pythonchallenge.com/pc/return/cat.html", 15)
 
 # his name is uzi
-prompt.openurl("http://www.pythonchallenge.com/pc/return/uzi.html")
+prompt.openurl("http://www.pythonchallenge.com/pc/return/uzi.html", 15)

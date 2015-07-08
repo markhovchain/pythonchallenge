@@ -43,4 +43,4 @@ straight.show()
 
 # says 'romance'
 import prompt
-prompt.openurl("http://www.pythonchallenge.com/pc/return/romance.html")
+prompt.openurl("http://www.pythonchallenge.com/pc/return/romance.html", 17)

@@ -28,6 +28,6 @@ URL 4: {2}
 """.format(ans, url3, url4))
 
 import prompt
-prompt.openurl(url4)
+prompt.openurl(url4, 4)
 
 # url4 = "http://www.pythonchallenge.com/pc/def/linkedlist.html"

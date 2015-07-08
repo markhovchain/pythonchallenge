@@ -48,4 +48,4 @@ print(''.join([chr(i) for i in [105, 110, 116, 101, 103, 114, 105, 116, 121]]))
 
 import prompt
 url8 = 'http://www.pythonchallenge.com/pc/def/integrity.html'
-prompt.openurl(url8)
+prompt.openurl(url8, 8)

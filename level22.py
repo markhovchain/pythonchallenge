@@ -68,7 +68,7 @@ t.hideturtle()
 # it spells "bonus"
 
 import prompt
-prompt.openurl("http://www.pythonchallenge.com/pc/hex/bonus.html")
+prompt.openurl("http://www.pythonchallenge.com/pc/hex/bonus.html", 23)
 
 
 

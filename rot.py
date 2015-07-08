@@ -23,6 +23,7 @@ def rotc(c, n):
         return c
     return chr((ord(c) - start + n) % 26 + start)
 
+
 def rots(s, n):
     """rotate string s by n places
     >>> rots('Why did the chicken cross the road?', 13)

@@ -59,9 +59,9 @@ print(''.join(chars))
 """
 
 import prompt
-prompt.openurl('http://www.pythonchallenge.com/pc/def/hockey.html')
+prompt.openurl('http://www.pythonchallenge.com/pc/def/hockey.html', 7)
 
 # Clue: "it's in the air. look at the letters."
 # the letters are written other letters: H->O, O->X, C->Y, K->G, E->E, Y->N
 
-prompt.openurl('http://www.pythonchallenge.com/pc/def/oxygen.html')
+prompt.openurl('http://www.pythonchallenge.com/pc/def/oxygen.html', 7)

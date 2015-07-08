@@ -94,5 +94,5 @@ dimg.show()
 
 url32 = "http://www.pythonchallenge.com/pc/rock/arecibo.html"
 import prompt
-prompt.openurl(url32)
+prompt.openurl(url32, 32)
 

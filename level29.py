@@ -13,6 +13,7 @@ html = openurl(url29, "repeat", "switch").read()
 # each newline has different number of spaces
 
 import re
+
 sp = re.search("</html>(.*)", html.decode(), re.S).group(1)
 
 
@@ -28,6 +29,6 @@ print(decompress(bb[1:]))
 url30 = "http://www.pythonchallenge.com/pc/ring/yankeedoodle.html"
 
 from prompt import openurl
-openurl(url30)
+openurl(url30, 30)
 
 

@@ -46,4 +46,4 @@ URL 2: {3}
 """.format(w, trans_string(w), url1, url2))
 
 import prompt
-prompt.openurl(url2)
+prompt.openurl(url2, 2)

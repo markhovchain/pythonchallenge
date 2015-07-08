@@ -22,4 +22,4 @@ print(ans)
 
 import prompt
 
-prompt.openurl('http://www.pythonchallenge.com/pc/return/5808.html')
+prompt.openurl('http://www.pythonchallenge.com/pc/return/5808.html', 11)

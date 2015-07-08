@@ -48,4 +48,4 @@ url10 = 'http://www.pythonchallenge.com/pc/return/cow.html'
 url10 = 'http://www.pythonchallenge.com/pc/return/bull.html'
 
 import prompt
-prompt.openurl(url10)
+prompt.openurl(url10, 10)

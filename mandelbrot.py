@@ -41,4 +41,3 @@ def render(w, h, max_iter=128, x0=-2, x1=0.5, y0=-1.25, y1=1.25):
             img.putpixel((x, y), v)
     return img.transpose(Image.FLIP_TOP_BOTTOM)
 
-

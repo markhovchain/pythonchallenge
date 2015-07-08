@@ -101,7 +101,7 @@ if __name__ == "__main__":
     ...
     """
 
-    # let's take only the red value from the even pixels and since they are 0-255
+    # let's then take only the red value from the even pixels
 
     mp = Image.open(maze_path_img)
     pixels = [mp.getpixel(xy) for xy in path]
@@ -137,3 +137,9 @@ if __name__ == "__main__":
     Can you believe what one mistake can lead to?
     """
 
+    # this must be clue for later
+
+    print("\nusername: butter\npassword: fly\n")
+
+    import prompt
+    prompt.openurl(url25, 25)

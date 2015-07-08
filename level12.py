@@ -32,4 +32,4 @@ for i in range(0,5):
 # the images spell: dis-pro-por-tional # last one is -ality, but crossed out
 
 import prompt
-prompt.openurl("http://www.pythonchallenge.com/pc/return/disproportional.html")
+prompt.openurl("http://www.pythonchallenge.com/pc/return/disproportional.html", 13)

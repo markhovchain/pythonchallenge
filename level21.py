@@ -68,6 +68,6 @@ print(''.join(log).replace("B", "*").replace("R", "\n").replace("Z", " "))
 """
 
 import prompt
-prompt.openurl('http://www.pythonchallenge.com/pc/hex/copper.html')
+prompt.openurl('http://www.pythonchallenge.com/pc/hex/copper.html', 22)
 
 

@@ -27,7 +27,7 @@ even.show()
 # if you look closely, you can see a word in the image: evil
 
 import prompt
-prompt.openurl("http://www.pythonchallenge.com/pc/return/evil.html")
+prompt.openurl("http://www.pythonchallenge.com/pc/return/evil.html", 12)
 
 
 

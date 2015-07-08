@@ -79,5 +79,5 @@ Namespaces are one honking great idea -- let's do more of those!
 # there it is: "In the face of ambiguity..."
 
 import prompt
-prompt.openurl("http://www.pythonchallenge.com/pc/hex/ambiguity.html")
+prompt.openurl("http://www.pythonchallenge.com/pc/hex/ambiguity.html", 24)
 

@@ -197,7 +197,8 @@ img.save("img/up.png")
 
 url33 = "http://www.pythonchallenge.com/pc/rock/beer.html"
 
-
+from prompt import openurl
+openurl(url33, 33)
 
 
 

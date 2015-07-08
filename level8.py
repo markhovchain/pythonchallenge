@@ -40,4 +40,4 @@ pw: '{}'
 url9 = 'http://www.pythonchallenge.com/pc/return/good.html'
 
 import prompt
-prompt.openurl(url9)
+prompt.openurl(url9, 9)

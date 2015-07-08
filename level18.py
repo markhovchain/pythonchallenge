@@ -39,7 +39,7 @@ for s in ['intensity', 'dark', 'darker', 'brighter', 'brightness', 'obvious']:
         u = openurl(url, "huge", "file")
         if u.getcode() == 200:
             print("{} works!". format(url))
-            prompt.openurl(url)
+            prompt.openurl(url, 18)
             break
         else:
             print("{} doesn't work".format(url))
@@ -102,8 +102,11 @@ for i, c in [(1, '+'), (2, '-'), (3, ' ')]:
 
 # the files say: butter - fly - ../hex/bin.html
 
+print("\nusername:", "butter")
+print("password", "fly\n")
+
 import prompt
-prompt.openurl("http://www.pythonchallenge.com/pc/hex/bin.html", "butter", "fly")
+prompt.openurl("http://www.pythonchallenge.com/pc/hex/bin.html", 18)
 
 
 

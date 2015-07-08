@@ -65,7 +65,10 @@ with wave.open(indian) as f:
 url20 = 'http://www.pythonchallenge.com/pc/hex/idiot.html'
 
 import prompt
-prompt.openurl(url20)
+prompt.openurl(url20, 20)
 
 # picture of leopold: "now you should apologize..."
 # like to actual level: 'http://www.pythonchallenge.com/pc/hex/idiot2.html'
+
+url20 = 'http://www.pythonchallenge.com/pc/hex/idiot2.html'
+prompt.openurl(url20, 20)

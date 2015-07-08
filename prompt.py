@@ -2,8 +2,9 @@ __author__ = 'dracz'
 
 import webbrowser
 
-def openurl(url):
-    prompt("Press enter to open: '{}'...\n".format(url))
+def openurl(url, level=None):
+    s = "Press enter to open level {}: '{}'...\n".format(level, url)
+    prompt(s)
     webbrowser.open(url)
 
 def prompt(s="Press enter to continue..."):

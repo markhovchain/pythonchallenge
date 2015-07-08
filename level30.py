@@ -95,7 +95,7 @@ import prompt
 def solve():
     show_image()
     compute_n()
-    prompt.openurl(url31)
+    prompt.openurl(url31, 31)
 
 solve()
 

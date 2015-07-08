@@ -52,4 +52,4 @@ for l in p:
 """
 
 import prompt
-prompt.openurl('http://www.pythonchallenge.com/pc/def/channel.html')
+prompt.openurl('http://www.pythonchallenge.com/pc/def/channel.html', 6)
