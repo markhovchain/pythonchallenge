@@ -25,9 +25,13 @@ You can run the solution for all levels with
 
     $ python3.4 solve.py
     
-Or solve a single level, with:
+Or solve a single level, for example level 0 with:
 
     $ python3.4 solve.py 0
+    
+Or also for single level, for example level 0:
+
+     $ python3.4 level0.py    
     
 Or solve range or levels with:
 
