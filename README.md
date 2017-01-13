@@ -46,7 +46,7 @@ Or solve range of levels with:
 
     $ python3.4 solve.py 0 10
     
-Running the solution will prompt to open the next level page in the browser. When username/password are required,
+Running the solution will prompt the user to open the next level page in the browser. When username/password are required,
 they are printed to the console before prompting to open. Various output from the solutions are typically printed 
 and any images that are generated are typically opened for preview.
 
